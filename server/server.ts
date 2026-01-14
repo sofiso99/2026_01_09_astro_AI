@@ -1,9 +1,8 @@
 
-
 import path from "path";
 import express, { Request, Response, NextFunction } from "express";
 import apiRouter from "./routes/api";
-import oauthRouter from "./routes/oauth"; // kept import (even if not used yet)
+import oauthRouter from "./routes/oauth";
 
 import { ServerError } from "./types";
 
@@ -36,7 +35,7 @@ const clientPath = path.resolve(import.meta.dirname, "../client");
 app.use("/", express.static(clientPath));
 
 /**
- * ✅ OpenStreetMap (Nominatim) geocoding endpoint
+ *  OpenStreetMap (Nominatim) geocoding endpoint
  * Frontend will call: /api/geocode?q=Accra
  * Returns: [{ displayName, lat, lon }, ...]
  */
@@ -85,14 +84,14 @@ app.use("/api", apiRouter);
 // app.use("/oauth", oauthRouter); // keep commented if not using
 
 /**
- * ✅ SPA fallback: serve React index.html for any non-API route
- * Important: use "*" not "/" so refresh on nested routes works.
+ * SPA fallback: serve React index.html for any non-API route
+ * Important: for anyone, i used "/.* not "/" so refresh on nested routes works.
  */
 app.get(/.*/, (_: Request, res: Response) => {
   return res.status(200).sendFile(path.join(clientPath, "index.html"));
 });
 
-// catch-all route handler for any requests to an unknown route (mostly API leftovers)
+// catch-all route handler for any requests to an unknown route
 app.use((_: Request, res: Response) => {
   return res.status(404).send("404: page not found");
 });
