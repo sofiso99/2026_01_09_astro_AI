@@ -1,7 +1,7 @@
 import express from "express";
 import openaiController from "../controllers/openaiController.ts";
 import userController from "../controllers/userController.ts";
-import sessionController from "../controllers/sessionController.ts";
+// import sessionController from "../controllers/sessionController.ts";
 import { createSecureServer } from "http2";
 import dataController from "../controllers/dataController.ts";
 import { validateInputTools } from "openai/lib/ResponsesParser.mjs";

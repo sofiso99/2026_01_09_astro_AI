@@ -1,7 +1,7 @@
 import path from "path";
 import express, { Request, Response, NextFunction } from "express";
 import apiRouter from "./routes/api";
-import oauthRouter from "./routes/oauth";
+
 
 import { ServerError } from "./types";
 
